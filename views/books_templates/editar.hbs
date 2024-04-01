@@ -1,0 +1,62 @@
+{{>nav}}
+{{#if books}}
+    {{#each books}}
+    <div class="container">
+        <h1 class="mt-5 mb-4">Editar livro: {{titulo}}</h1>
+        <form action="/books/editar/{{id}}" method="POST" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" class="form-control" required placeholder="{{titulo}}">
+                <div class="invalid-feedback">Por favor, insira o título do livro.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="autores">Autores:</label>
+                <input type="text" id="autores" name="autores" class="form-control" required placeholder="{{autores}}">
+                <div class="invalid-feedback">Por favor, insira o(s) autor(es) do livro.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="editora">Editora:</label>
+                <input type="text" id="editora" name="editora" class="form-control" required placeholder="{{editora}}"> 
+                <div class="invalid-feedback">Por favor, insira a editora do livro.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="anopublicado">Ano de Publicação:</label>
+                <input type="date" id="anopublicado" name="anopublicado" class="form-control" required placeholder="{{anopublicado}}">
+                <div class="invalid-feedback">Por favor, insira o ano de publicação do livro.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" name="genero" class="form-control" placeholder="{{genero}}">
+            </div>
+
+            <div class="form-group">
+                <label for="sinopse">Sinopse:</label>
+                <input type="text" id="sinopse" name="sinopse" class="form-control" placeholder="{{sinopse}}"></input>
+            </div>
+
+            <div class="form-group">
+                <label for="estoque">Estoque:</label>
+                <input type="number" id="estoque" name="estoque" class="form-control" required placeholder="{{estoque}}">
+                <div class="invalid-feedback">Por favor, insira a quantidade em estoque do livro.</div >
+            </div>
+
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="number" step="0.01" id="preco" name="preco" class="form-control" required placeholder="{{preco}}">
+                <div class="invalid-feedback">Por favor, insira o preço do livro.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+
+        </form>
+
+        {{#if msgs}}
+            {{msgs.[0]}}
+        {{/if}}
+    </div>
+    {{/each}}
+{{/if}}

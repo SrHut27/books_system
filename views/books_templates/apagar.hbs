@@ -1,0 +1,32 @@
+{{#if books}}
+
+        <div class="row justify-content-center">
+            {{#each books}}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">Livro: {{titulo}}</h5>
+                            <p class="card-text"><strong>Autores:</strong> {{autores}}</p>
+                            <p class="card-text"><strong>Estoque:</strong> {{estoque}} unidades</p>
+                            <p class="card-text"><strong>Preço:</strong> R$ {{preco}}</p>
+                            <!-- Adicione mais detalhes conforme necessário -->
+                            <div class="text-center">
+                                <form action="/books/apagar/{{id}}" method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-danger mr-2">Apagar livro</button>
+                                </form>
+                            <button id="cancelButton" class="btn btn-secondary">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            {{/each}}
+        </div>
+
+{{/if}}
+
+<script>
+    document.getElementById("cancelButton").addEventListener("click", function() {
+        // Redireciona o usuário para a rota anteriormente visitada
+        window.location.href = "{{req.session.currentURL}}";
+    });
+</script>

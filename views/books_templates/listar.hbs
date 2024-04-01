@@ -1,0 +1,33 @@
+{{>nav}}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form action="listar/pesquisar" method="GET" class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Pesquisar pelo nome do livro" name="nomeDolivro" id="nomeDolivro">
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                </div>
+            </form>
+            <a href="/books/listar" class="btn btn-secondary mb-3">Limpar pesquisa</a>
+            {{#if books}}
+                {{#each books}}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{titulo}}</h5>
+                            <p class="card-text">{{autores}}</p>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="/books/editar/{{id}}" class="btn btn-primary me-md-2 mb-2 mb-md-0">Editar</a>
+                                <form action="/books/apagar/{{id}}" method="GET">
+                                    <button type="submit" class="btn btn-danger">Apagar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p>Não há nenhum livro no momento...</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
